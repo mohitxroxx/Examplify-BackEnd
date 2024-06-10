@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-      "target": "es2016",
-      "module": "commonjs",
-      "outDir": "./dist",
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "skipLibCheck": true
-  }
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "target": "es2017",
+    "outDir": "./public",
+    "baseUrl": "./lib",
+    "lib": ["es2017", "dom", "esnext"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }
