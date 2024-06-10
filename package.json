@@ -4,9 +4,8 @@
   "description": "Backend for Examplify",
   "main": "index.ts",
   "scripts": {
-    "start": "tsc && node dist/index.js",
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon index.ts"
   },
   "repository": {
     "type": "git",
