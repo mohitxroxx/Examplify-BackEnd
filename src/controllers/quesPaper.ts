@@ -32,7 +32,7 @@ const addPaper = async (req: Request, res: Response) => {
     }
 }
 
-const updatePaper = async (req: Request, res: Response) => {
+const editPaper = async (req: Request, res: Response) => {
     try {
         const _id = req.params.id
         if (!_id)
@@ -63,7 +63,7 @@ const delPaper = async (req: Request, res: Response) => {
 const all_exports = {
     getPapers,
     addPaper,
-    updatePaper,
+    editPaper,
     delPaper
 }
 

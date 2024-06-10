@@ -2,7 +2,7 @@
   "name": "examlify",
   "version": "1.0.0",
   "description": "Backend for Examplify",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "start": "tsc && node dist/index.js",
     "build": "tsc",
@@ -21,19 +21,23 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
     "@vercel/node": "^3.1.7",
+    "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.1",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/mongoose": "^5.11.97"
   }
 }
