@@ -2,7 +2,7 @@
   "name": "examlify",
   "version": "1.0.0",
   "description": "Backend for Examplify",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "start": "tsc && node dist/index.js",
     "build": "tsc",
