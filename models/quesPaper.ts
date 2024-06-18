@@ -8,6 +8,7 @@ interface IQP {
     exam: string,
     branch: string,
     course: string,
+    key: string,
     qp: string,
     sol: string,
     created_by: string,
@@ -53,6 +54,12 @@ const quesPaperSchema = new Schema<IQP>({
         type: String,
         enum: ["BTech", "MCA", "MTech"],
         required: true
+    },
+    key:{
+        type:String,
+        required:true,
+        trim:true,
+        unique:true
     },
     qp: {
         type: String,
