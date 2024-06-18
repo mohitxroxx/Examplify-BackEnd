@@ -34,9 +34,11 @@ const awsUpload = async (key: string, buffer: Buffer): Promise<number> => {
 const getPapers = async (req: Request, res: Response) => {
     try {
         const year = req.query.year
+        if(!year)
+            return res.status(403).json({error:"Year must be specified to view data"})
         const existing = await quesPaper.find({ year })
-        if (!existing)
-            return res.status(404).json({ msg: "No data found corresponding to this id" })
+        if (existing.length==0)
+            return res.status(404).json({ msg: "No data found corresponding to current data" })
         const page = parseInt(String(req.query.page)) || 1;
         const limit = 10;
         const skip = (page - 1) * limit;
