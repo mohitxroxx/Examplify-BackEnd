@@ -70,7 +70,7 @@ const quesPaperSchema = new Schema<IQP>({
     sol: {
         type: String,
         trim: true,
-        unique:true
+        // unique:true
     },
     created_by: {
         type: String,
