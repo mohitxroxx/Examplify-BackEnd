@@ -12,21 +12,21 @@ const client = new S3Client({
     },
 });
 
-// async function test() {
-//     const abc=await client.send(
-//         new ListBucketsCommand('')
-//       )
-//       console.log(abc)
-// }
-// test()
-const getUrl=async(key:string)=>{
-    const command=new GetObjectCommand({
-        Bucket:process.env.R2_BUCKET_NAME as string,
-        Key:key
-    });
-    const url= await getSignedUrl(client,command)
-    return url
+async function test() {
+    const abc=await client.send(
+        new ListBucketsCommand('')
+      )
+      console.log(abc)
 }
+// test()
+// const getUrl=async(key:string)=>{
+//     const command=new GetObjectCommand({
+//         Bucket:process.env.R2_BUCKET_NAME as string,
+//         Key:key
+//     });
+//     const url= await getSignedUrl(client,command)
+//     return url
+// }
 
 // async function url1() {
 //     const value=await url('hi.txt')
@@ -42,7 +42,7 @@ const uploadFile=async(file: { name: string, body: Buffer })=>{
             ContentType:"application/pdf" 
         });
         const response = await client.send(command);
-        console.log(response);
+        // console.log(response);
     } catch (error) {
         console.error("File upload failed:", error);
     }

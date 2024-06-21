@@ -30,14 +30,13 @@ const awsUpload = async (key: string, buffer: Buffer): Promise<number> => {
         return 0
     }
 }
-
 const getPapers = async (req: Request, res: Response) => {
     try {
         const year = req.query.year
-        if(!year)
-            return res.status(403).json({error:"Year must be specified to view data"})
+        if (!year)
+            return res.status(403).json({ error: "Year must be specified to view data" })
         const existing = await quesPaper.find({ year })
-        if (existing.length==0)
+        if (existing.length == 0)
             return res.status(404).json({ msg: "No data found corresponding to current data" })
         const page = parseInt(String(req.query.page)) || 1;
         const limit = 10;
@@ -58,8 +57,8 @@ const addPaper = async (req: Request, res: Response) => {
         const questionPaper = req.files['qp']
         if (!questionPaper)
             return res.status(403).json({ msg: "Uploading question paper is mandatory" })
-        // if (!questionPaper[0].originalname.endsWith('.pdf'))
-        // return res.status(403).json({ msg: "Question Paper uploading failed as only pdf files are allowed as of now" })
+        if (!questionPaper[0].originalname.endsWith('.pdf'))
+            return res.status(403).json({ msg: "Question Paper uploading failed as only pdf files are allowed as of now" })
         let qpBuffer = questionPaper[0].buffer
         if (!qpBuffer)
             return res.status(403).json({ msg: "Invalid file buffer for question paper" })
@@ -71,10 +70,10 @@ const addPaper = async (req: Request, res: Response) => {
         const existing = await quesPaper.findOne({ key: qpKey })
         if (existing)
             return res.status(403).json({ error: `This question paper already exists with the ${qpKey} detail.` })
-        let solLink = ''
+        let solLink = ""
         if (solution) {
-            // if (!solution[0].originalname.endsWith('.pdf'))
-            // return res.status(403).json({ msg: "Solution uploading failed as only pdf files are allowed as of now" })
+            if (!solution[0].originalname.endsWith('.pdf'))
+                return res.status(403).json({ msg: "Solution uploading failed as only pdf files are allowed as of now" })
             const solBuffer = solution[0].buffer
             if (!solBuffer)
                 return res.status(403).json({ msg: "Invalid file buffer for solution" })
